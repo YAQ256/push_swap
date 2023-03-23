@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:57:29 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/23 21:35:03 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/23 22:08:09 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char *argv[])
 	int				n_args;
 
 	if (argc == 1)
-		merror("Error: invalid number of arguments");
+		return (0);
 	stack_a = NULL;
 	stack_a = splited(argc, argv, stack_a);
 	n_args = ft_lastnode(stack_a)->pos + 1;
