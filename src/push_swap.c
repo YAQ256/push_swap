@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:57:29 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/22 13:18:40 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:10:22 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,23 @@
 int	main(int argc, char *argv[])
 {
 	struct s_push *stack_a;
-
-	if (argc < 3)
-		merror("Error: invalid number of arguments");
-	stack_a = NULL;
-	//nb_args = splited(argc, argv, stack_a);
+	int				n_args;
+	//char		**nb_args;
+	/* if (argc < 3)
+		merror("Error: invalid number of arguments"); */
 	//stack_a = args_splited(argc, argv, stack_a);
-	stack_a = stack_memory(stack_a, argc, argv);
+	stack_a = NULL;
+	stack_a = splited(argc, argv, stack_a);
+	n_args = ft_lastnode(stack_a)->pos + 1;
 	assign_index(stack_a);
-	if (is_sorted(stack_a))
+	if (is_sorted(stack_a, NULL))
 		merror("Is sorted");
-	if (argc == 3)
+	if (n_args == 2)
 	{
 		pgreen("sa");
 		return (0);
 	}
-	if (argc == 4)
+	if (n_args == 3)
 	{
 		stack_a = sort_three_numbers(stack_a);
 		return (0);

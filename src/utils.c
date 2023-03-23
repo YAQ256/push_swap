@@ -6,13 +6,13 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 14:06:42 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/22 13:17:33 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:10:44 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//el exit libera memoria?
+//el exit libera memoria?  = NO
 
 //pone un mensaje de error y sale del programa
 void	merror(char *str)
@@ -21,6 +21,17 @@ void	merror(char *str)
 	ft_putendl_fd(str, 2);
 	ft_putstr_fd(RESET, 2);
 	exit(0);
+}
+
+struct s_push	*ft_lastnode(struct s_push *lst)
+{
+	if (lst)
+	{
+		while (lst->next)
+			lst = lst->next;
+		return (lst);
+	}
+	return (0);
 }
 
 /* struct s_push	*ft_newnode(int number)
@@ -35,21 +46,22 @@ void	merror(char *str)
 	return (node);
 } */
 
-/* char	**splited(int argc, char **argv, struct s_push *stack)
+struct s_push	*splited(int argc, char **argv, struct s_push *stack)
 {
-	int	i;
-	char **tab;
+	int		i;
+	int		n;
+	char	**tmp;
 
-	(void)argc;
-	//(void)argv;
-	(void)stack;
-	tab = ft_split(argv[1], ' ');
-	i = 0;
-	printf("aqui llega\n");
-	while(i < 3){
-		printf("%s\n", tab[i]);
-		i++;}
-} */
+	i = 1;
+	n = 0;
+	while (i < argc)
+	{
+		tmp = ft_split(argv[i], ' ');
+		stack = stack_memory(stack, tmp, &n);
+		i++;
+	}
+	return (stack);
+}
 
 /* t_push	*args_splited(int argc, char *argv[], t_push *stack)
 {
@@ -66,13 +78,15 @@ void	merror(char *str)
 } */
 
 //aloca memoria para el stack_a
-struct s_push *stack_memory(struct s_push *stack, int argc, char **argv)
+struct s_push	*stack_memory(struct s_push *stack, char **argv, int *n)
 {
 	int				i;
-	struct s_push	*res;
+	struct s_push	*aux;
 
 	i = 0;
-	while (++i < argc)
+	aux = stack;
+	stack = ft_lastnode(stack);
+	while (argv[i])
 	{
 		if (stack)
 		{
@@ -86,13 +100,15 @@ struct s_push *stack_memory(struct s_push *stack, int argc, char **argv)
 			stack = malloc(sizeof(t_push));
 			if (!stack)
 				merror("malloc fail");
-			res = stack;
+			aux = stack;
 		}
 		stack->value = ft_atoi(argv[i]);
-		stack->pos = (i - 1);
+		i++;
+		stack->pos = *n;
+		*n += 1;
 	}
 	stack->next = NULL;
-	return (res);
+	return (aux);
 }
 
 //calcula el número basandose si es mayor o menor que el resto
@@ -130,7 +146,7 @@ void	assign_index(struct s_push *stack)
 }
 
 //comprueba si el stack está ordenado
-/* int	is_sorted2(struct s_push *stack_a, struct s_push *stack_b)
+int	is_sorted(struct s_push *stack_a, struct s_push *stack_b)
 {
 	if (stack_b)
 		return (0);
@@ -146,10 +162,10 @@ void	assign_index(struct s_push *stack)
 		stack_a = stack_a->next;
 	}
 	return (1);
-} */
+}
 
 //comprueba si el stack está ordenado
-int	is_sorted(struct s_push *stack_a)
+/* int	is_sorted(struct s_push *stack_a)
 {
 	while (stack_a->next)
 	{
@@ -158,4 +174,4 @@ int	is_sorted(struct s_push *stack_a)
 		stack_a = stack_a->next;
 	}
 	return (1);
-}
+} */

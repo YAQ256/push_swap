@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:11:50 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/22 09:40:03 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/23 15:23:40 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_atoi(const char *str)
 	if (ret < INT_MIN || ret > INT_MAX || \
 			(*str < '0' && *str != '\0') || (*str > '9' && *str != '\0'))
 	{
-		ft_putstr_fd(RED"Error\n"RESET, 2);
+		ft_putstr_fd(RED"Atoi Error\n"RESET, 2);
 		exit(0);
 	}
 	return (ret * negative);
