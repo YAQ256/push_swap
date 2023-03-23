@@ -6,13 +6,12 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:57:31 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/23 17:09:32 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/23 21:51:46 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
@@ -47,12 +46,28 @@ struct s_push	*rrb(struct s_push *stack_b);
 void			pb(struct s_push **stack_a, struct s_push **stack_b);
 void			rr(struct s_push **stack_a, struct s_push **stack_b);
 void			rrr(struct s_push **stack_a, struct s_push **stack_b);
-//int				is_sorted(struct s_push *stack_a);
 struct s_push	*sort_three_numbers(struct s_push *stack);
 struct s_push	*splited(int argc, char **argv, struct s_push *stack);
 struct s_push	*ft_lastnode(struct s_push *lst);
-//t_push			*args_splited(int argc, char *argv[], t_push *stack);
-//void	splited(int argc, char **argv, struct s_push *stack);
+int	stack_size(struct s_push *stack);
+void	calculate_cost(struct s_push *stack_a, struct s_push *stack_b);
+int	ft_abs(int i);
+int	find_lowest_cost(struct s_push *stack_b);
+int	rotate_a(struct s_push **stack_a, int rotations);
+int	rotate_b(struct s_push **stack_b, int rotations);
+void	move_single(struct s_push **stack_a, struct s_push **stack_b, \
+	struct s_push *start);
+void	sort_single(struct s_push **stack_a, struct s_push **stack_b);
+struct s_push	*orient_a(struct s_push *stack_a, \
+		struct s_push *start, int a_size);
+void	free_stack(struct s_push *stack);
+void	assign_pos(struct s_push *stack_a, struct s_push *stack_b);
+void	assign_target_pos(struct s_push *stack_a, struct s_push *stack_b, \
+		int target_pos, struct s_push *start);
+void	rotate_single(struct s_push **stack_a, struct s_push **stack_b, \
+	int a_rotations, int b_rotations);
+
+
 
 //===SETTINGS 	COLORS===/
 //===Color font code===/

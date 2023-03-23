@@ -6,7 +6,7 @@
 #    By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/19 13:56:59 by cyacoub-          #+#    #+#              #
-#    Updated: 2023/03/22 06:56:00 by cyacoub-         ###   ########.fr        #
+#    Updated: 2023/03/23 21:36:36 by cyacoub-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = push_swap
 HEADER = push_swap.h
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror
 # -fsanitize=address -g3
 LIBFT = ./libft/libft.a
 LIB = ./src/push_swap.h

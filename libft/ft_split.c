@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 13:31:17 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/21 22:42:12 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2022/09/30 12:52:31 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,18 +98,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (0);
 }
-
-/* #include <stdio.h>
-int		main(void)
-{
-	int i = 0;
-	char **tab;
-		
-	tab = ft_split("   hola   mundo, extamos buscando a willy   ", 32);
-	while (i < 6)
-	{
-		printf("string %d : %s\n", i, tab[i]);
-		i++;
-	}
-	return (0);
-} */
