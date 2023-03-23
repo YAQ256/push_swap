@@ -6,18 +6,17 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:57:31 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/23 21:51:46 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/23 22:17:30 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# define	TRUE (void *)0
-# define	FALSE (void *)1
 
 typedef struct s_push
 {
@@ -30,42 +29,46 @@ typedef struct s_push
 	struct s_push	*next;
 }	t_push;
 
-void			merror(char *str);
 struct s_push	*stack_memory(struct s_push *stack, char **argv, int *n);
+struct s_push 	*sa(struct s_push *stack_a);
+struct s_push 	*ra(struct s_push *stack_a);
+struct s_push	*rra(struct s_push *stack_a);
+struct s_push	*sb(struct s_push *stack_b);
+struct s_push	*rb(struct s_push *stack_b);
+struct s_push	*rrb(struct s_push *stack_b);
+struct s_push	*sort_three_numbers(struct s_push *stack);
+struct s_push	*splited(int argc, char **argv, struct s_push *stack);
+struct s_push	*ft_lastnode(struct s_push *lst);
+struct s_push	*orient_a(struct s_push *stack_a, \
+					struct s_push *start, int a_size);
+
+
+void			merror(char *str);
 int				get_index(struct s_push *stack, struct s_push *cur);
 void			assign_index(struct s_push *stack);
 int				is_sorted(struct s_push *stack_a, struct s_push *stack_b);
 void			pgreen(char *str);
-struct s_push 	*sa(struct s_push *stack_a);
-struct s_push 	*ra(struct s_push *stack_a);
-struct s_push	*rra(struct s_push *stack_a);
 void			pa(struct s_push **stack_a, struct s_push **stack_b);
-struct s_push	*sb(struct s_push *stack_b);
-struct s_push	*rb(struct s_push *stack_b);
-struct s_push	*rrb(struct s_push *stack_b);
 void			pb(struct s_push **stack_a, struct s_push **stack_b);
 void			rr(struct s_push **stack_a, struct s_push **stack_b);
 void			rrr(struct s_push **stack_a, struct s_push **stack_b);
-struct s_push	*sort_three_numbers(struct s_push *stack);
-struct s_push	*splited(int argc, char **argv, struct s_push *stack);
-struct s_push	*ft_lastnode(struct s_push *lst);
-int	stack_size(struct s_push *stack);
-void	calculate_cost(struct s_push *stack_a, struct s_push *stack_b);
-int	ft_abs(int i);
-int	find_lowest_cost(struct s_push *stack_b);
-int	rotate_a(struct s_push **stack_a, int rotations);
-int	rotate_b(struct s_push **stack_b, int rotations);
-void	move_single(struct s_push **stack_a, struct s_push **stack_b, \
-	struct s_push *start);
-void	sort_single(struct s_push **stack_a, struct s_push **stack_b);
-struct s_push	*orient_a(struct s_push *stack_a, \
-		struct s_push *start, int a_size);
-void	free_stack(struct s_push *stack);
-void	assign_pos(struct s_push *stack_a, struct s_push *stack_b);
-void	assign_target_pos(struct s_push *stack_a, struct s_push *stack_b, \
-		int target_pos, struct s_push *start);
-void	rotate_single(struct s_push **stack_a, struct s_push **stack_b, \
-	int a_rotations, int b_rotations);
+int				stack_size(struct s_push *stack);
+void			calculate_cost(struct s_push *stack_a, struct s_push *stack_b);
+int				ft_abs(int i);
+int				find_lowest_cost(struct s_push *stack_b);
+int				rotate_a(struct s_push **stack_a, int rotations);
+int				rotate_b(struct s_push **stack_b, int rotations);
+void			sort_single(struct s_push **stack_a, struct s_push **stack_b);
+void			free_stack(struct s_push *stack);
+void			assign_pos(struct s_push *stack_a, struct s_push *stack_b);
+
+
+void			move_single(struct s_push **stack_a, struct s_push **stack_b, \
+					struct s_push *start);
+void			assign_target_pos(struct s_push *stack_a, struct s_push *stack_b, \
+					int target_pos, struct s_push *start);
+void			rotate_single(struct s_push **stack_a, struct s_push **stack_b, \
+					int a_rotations, int b_rotations);
 
 
 
