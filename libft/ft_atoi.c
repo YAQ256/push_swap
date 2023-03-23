@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:11:50 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/09 17:02:39 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/22 09:40:03 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,28 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	nb;
+	long int	ret;
+	int			negative;
 
-	i = 0;
-	sign = 1;
-	nb = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	ret = 0;
+	negative = 1;
+	if (*str == '-')
 	{
-		if (str[i] == '-')
-		{
-			sign *= -1;
-		}
-		i++;
+		if (*str == '-')
+			negative = -1;
+		++str;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (*str >= '0' && *str <= '9')
 	{
-		nb = (str[i] - '0') + (nb * 10);
-		i++;
+		ret *= 10;
+		ret += (*str - 48);
+		++str;
 	}
-	return (nb * sign);
+	if (ret < INT_MIN || ret > INT_MAX || \
+			(*str < '0' && *str != '\0') || (*str > '9' && *str != '\0'))
+	{
+		ft_putstr_fd(RED"Error\n"RESET, 2);
+		exit(0);
+	}
+	return (ret * negative);
 }

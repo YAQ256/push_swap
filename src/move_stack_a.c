@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 18:30:41 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/19 19:01:19 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:27:02 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ struct s_push *sa(struct s_push *stack_a)
 	buffer = stack_a->next;
 	stack_a->next = buffer->next;
 	buffer->next = stack_a;
-	pcyan("sa");
+	pgreen("sa");
 	return (buffer);
 }
 
@@ -37,7 +37,7 @@ struct s_push *ra(struct s_push *stack_a)
 	while (stack_a->next)
 		stack_a = stack_a->next;
 	stack_a->next = buffer;
-	pcyan("ra");
+	pgreen("ra");
 	return (res);
 }
 
@@ -53,7 +53,7 @@ struct s_push	*rra(struct s_push *stack_a)
 	buffer = stack_a->next;
 	stack_a->next = NULL;
 	buffer->next = start;
-	pcyan("rra");
+	pgreen("rra");
 	return (buffer);
 }
 
@@ -68,5 +68,5 @@ void	pa(struct s_push **stack_a, struct s_push **stack_b)
 	(*stack_b)->next = *stack_a;
 	*stack_a = *stack_b;
 	*stack_b = buffer;
-	pcyan("pa");
+	pgreen("pa");
 }

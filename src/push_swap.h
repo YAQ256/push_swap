@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:57:31 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/19 19:11:05 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/22 13:17:39 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# define	TRUE (void *)0
+# define	FALSE (void *)1
 
 typedef struct s_push
 {
@@ -24,8 +26,9 @@ typedef struct s_push
 	int				value;
 	int				pos;
 	int				target_pos;
-	int				cost_a;
-	int				cost_b;
+	int				moves_a;
+	int				moves_b;
+	char			**spliteamos;
 	struct s_push	*next;
 }	t_push;
 
@@ -33,8 +36,8 @@ void			merror(char *str);
 struct s_push *stack_memory(struct s_push *stack, int argc, char **argv);
 int				get_index(struct s_push *stack, struct s_push *cur);
 void			assign_index(struct s_push *stack);
-int				is_sorted(struct s_push *stack_a, struct s_push *stack_b);
-void			pcyan(char *str);
+//int				is_sorted2(struct s_push *stack_a, struct s_push *stack_b);
+void			pgreen(char *str);
 struct s_push 	*sa(struct s_push *stack_a);
 struct s_push 	*ra(struct s_push *stack_a);
 struct s_push	*rra(struct s_push *stack_a);
@@ -45,6 +48,10 @@ struct s_push	*rrb(struct s_push *stack_b);
 void			pb(struct s_push **stack_a, struct s_push **stack_b);
 void			rr(struct s_push **stack_a, struct s_push **stack_b);
 void			rrr(struct s_push **stack_a, struct s_push **stack_b);
+int				is_sorted(struct s_push *stack_a);
+struct s_push	*sort_three_numbers(struct s_push *stack);
+//t_push			*args_splited(int argc, char *argv[], t_push *stack);
+//void	splited(int argc, char **argv, struct s_push *stack);
 
 //===SETTINGS 	COLORS===/
 //===Color font code===/

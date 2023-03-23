@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 18:30:41 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/19 19:12:12 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:44:21 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	rr(struct s_push **stack_a, struct s_push **stack_b)
 		*stack_b = (*stack_b)->next;
 	(*stack_b)->next = buffer;
 	*stack_b = start;
-	pcyan("rr");
+	pgreen("rr");
 }
 
 //rra y rrb al mismo tiempo (lleva el de abajo del stack arriba del todo)
@@ -57,5 +57,5 @@ void	rrr(struct s_push **stack_a, struct s_push **stack_b)
 	(*stack_b)->next = NULL;
 	buffer->next = start;
 	*stack_b = buffer;
-	pcyan("rrr");
+	pgreen("rrr");
 }
