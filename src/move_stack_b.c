@@ -5,68 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/19 13:11:52 by bzawko            #+#    #+#             */
-/*   Updated: 2023/03/20 12:27:02 by cyacoub-         ###   ########.fr       */
+/*   Created: 2023/03/29 12:29:37 by cyacoub-          #+#    #+#             */
+/*   Updated: 2023/03/29 12:36:31 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//intercambia el primero por el segundo del stack "b"
-struct s_push	*sb(struct s_push *stack_b)
+void	sb(t_stack *b)
 {
-	struct s_push	*buffer;
-
-	buffer = stack_b->next;
-	stack_b->next = buffer->next;
-	buffer->next = stack_b;
-	pgreen("sb");
-	return (buffer);
+	swap(b);
+	write(1, "sb\n", 3);
 }
 
-//lleva el numero de arriba del stack "b" abajo del stack
-struct s_push	*rb(struct s_push *stack_b)
+void	pb(t_stack **a, t_stack **b)
 {
-	struct s_push	*ret;
-	struct s_push	*buffer;
-
-	ret = stack_b->next;
-	buffer = stack_b;
-	stack_b = stack_b->next;
-	buffer->next = NULL;
-	while (stack_b->next)
-		stack_b = stack_b->next;
-	stack_b->next = buffer;
-	pgreen("rb");
-	return (ret);
+	push(a, b);
+	write(1, "pb\n", 3);
 }
 
-//lleva el numero de abajo del stack "b" arriba del stack
-struct s_push	*rrb(struct s_push *stack_b)
+void	rb(t_stack **b)
 {
-	struct s_push	*start;
-	struct s_push	*buffer;
-
-	start = stack_b;
-	while (stack_b->next->next)
-		stack_b = stack_b->next;
-	buffer = stack_b->next;
-	stack_b->next = NULL;
-	buffer->next = start;
-	pgreen("rrb");
-	return (buffer);
+	rotate(b);
+	write(1, "rb\n", 3);
 }
 
-//manda el numbero de arriba del stack "a" al stack "b"
-void	pb(struct s_push **stack_a, struct s_push **stack_b)
+void	rrb(t_stack **b)
 {
-	struct s_push	*buffer;
-
-	if (!*stack_a)
-		return ;
-	buffer = (*stack_a)->next;
-	(*stack_a)->next = *stack_b;
-	*stack_b = *stack_a;
-	*stack_a = buffer;
-	pgreen("pb");
+	reverse_rotate(b);
+	write(1, "rrb\n", 4);
 }

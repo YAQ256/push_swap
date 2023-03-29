@@ -6,14 +6,14 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:42:50 by cyacoub-          #+#    #+#             */
-/*   Updated: 2022/09/29 14:43:14 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:54:59 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_lstdelone(t_stack *lst, void (*del)(int))
 {
-	(*del)(lst->content);
+	del(lst->data);
 	free(lst);
 }

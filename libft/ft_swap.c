@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 14:44:51 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/29 17:57:02 by cyacoub-         ###   ########.fr       */
+/*   Created: 2022/11/22 17:07:20 by amtadevo          #+#    #+#             */
+/*   Updated: 2023/03/29 14:41:39 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_stack	*ft_lstmap(t_stack *lst, int (f)(int), void (*del)(int))
+void	ft_swap(int *a, int *b)
 {
-	t_stack	*new_list;
-	t_stack	*new_node;
+	int	tmp;
 
-	new_list = NULL;
-	if (lst == NULL || f == NULL)
-		return (new_list);
-	while (lst)
-	{
-		new_node = ft_lstnew((*f)(lst->data));
-		if (new_node == NULL)
-		{
-			ft_lstclear(&new_list, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_list, new_node);
-		lst = lst->next;
-	}
-	return (new_list);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }

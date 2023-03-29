@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   split_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 14:44:51 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/29 17:57:02 by cyacoub-         ###   ########.fr       */
+/*   Created: 2023/03/29 13:01:15 by cyacoub-          #+#    #+#             */
+/*   Updated: 2023/03/29 13:01:42 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-t_stack	*ft_lstmap(t_stack *lst, int (f)(int), void (*del)(int))
+char	**split_args(int argc, char **argv)
 {
-	t_stack	*new_list;
-	t_stack	*new_node;
+	int		i;
+	char	**str;
+	char	*join;
+	char	*arr_to_free;
 
-	new_list = NULL;
-	if (lst == NULL || f == NULL)
-		return (new_list);
-	while (lst)
+	i = 1;
+	join = ft_strdup("");
+	while (i < argc)
 	{
-		new_node = ft_lstnew((*f)(lst->data));
-		if (new_node == NULL)
-		{
-			ft_lstclear(&new_list, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_list, new_node);
-		lst = lst->next;
+		arr_to_free = join;
+		join = ft_strjoin(join, argv[i]);
+		free(arr_to_free);
+		arr_to_free = join;
+		join = ft_strjoin(join, " ");
+		free(arr_to_free);
+		i++;
 	}
-	return (new_list);
+	str = ft_split(join, ' ');
+	free(join);
+	return (str);
 }

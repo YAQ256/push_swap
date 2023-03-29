@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   num_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 14:44:51 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/29 17:57:02 by cyacoub-         ###   ########.fr       */
+/*   Created: 2023/03/29 14:32:42 by cyacoub-          #+#    #+#             */
+/*   Updated: 2023/03/29 14:32:50 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-t_stack	*ft_lstmap(t_stack *lst, int (f)(int), void (*del)(int))
+int	num_len(int num)
 {
-	t_stack	*new_list;
-	t_stack	*new_node;
+	int	len;
 
-	new_list = NULL;
-	if (lst == NULL || f == NULL)
-		return (new_list);
-	while (lst)
+	len = 0;
+	while (num != 0)
 	{
-		new_node = ft_lstnew((*f)(lst->data));
-		if (new_node == NULL)
-		{
-			ft_lstclear(&new_list, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_list, new_node);
-		lst = lst->next;
+		len++;
+		num /= 10;
 	}
-	return (new_list);
+	return (len);
+}
+
+void	zeros_validation(char **str, int len)
+{
+	int	i;
+	int	*num;
+
+	i = 0;
+	num = malloc(sizeof(int) * len);
+	if (!num)
+		return ;
+	while (i < len)
+	{
+		if (num_len(ft_atoi(str[i])) > 16)
+			print_error();
+		i++;
+	}
+	free(num);
 }

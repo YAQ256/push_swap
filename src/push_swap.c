@@ -5,65 +5,56 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/19 13:57:29 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/23 22:08:09 by cyacoub-         ###   ########.fr       */
+/*   Created: 2023/03/29 12:39:39 by cyacoub-          #+#    #+#             */
+/*   Updated: 2023/03/29 15:57:03 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(struct s_push *stack_a, struct s_push *stack_b, \
-		int argc, int i)
+void	sort(t_stack **a, t_stack **b)
 {
-	while (i < (argc / 2) && stack_a->next->next->next)
+	int	size;
+
+	size = ft_lstsize(*a);
+	if (size <= 5)
 	{
-		if ((stack_a->index / 2) < (argc / 2))
-		{
-			pb(&stack_a, &stack_b);
-			++i;
-		}
-		else
-			stack_a = ra(stack_a);
+		small_sort(size, a, b);
+		ft_lstclear(a, del);
+		ft_lstclear(b, del);
 	}
-	while (stack_a->next->next->next)
-		pb(&stack_a, &stack_b);
-	stack_a = sort_three_numbers(stack_a);
-	while (stack_b)
+	else
 	{
-		assign_pos(stack_a, stack_b);
-		assign_target_pos(stack_a, stack_b, 1, stack_a);
-		calculate_cost(stack_a, stack_b);
-		sort_single(&stack_a, &stack_b);
+		indexing(*a);
+		stack_divider(a, b);
+		ft_lstclear(a, del);
+		ft_lstclear(b, del);
 	}
-	assign_pos(stack_a, stack_b);
-	stack_a = orient_a(stack_a, stack_a, stack_size(stack_a));
-	stack_b = stack_a;
-	free_stack(stack_a);
 }
 
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
-	struct s_push *stack_a;
-	int				n_args;
+	char	**args;
+	t_stack	*a;
+	t_stack	*b;
 
-	if (argc == 1)
-		return (0);
-	stack_a = NULL;
-	stack_a = splited(argc, argv, stack_a);
-	n_args = ft_lastnode(stack_a)->pos + 1;
-	assign_index(stack_a);
-	if (is_sorted(stack_a, NULL))
-		merror("Is sorted");
-	if (n_args == 3)
+	if (argc > 1)
 	{
-		stack_a = sort_three_numbers(stack_a);
-		return (0);
+		a = NULL;
+		b = NULL;
+		args = split_args(argc, argv);
+		if (!args || !args[0])
+			return (0);
+		error_check(args);
+		a = fill_stack(args);
+		free_str(args);
+		if (is_sorted(a))
+		{
+			ft_lstclear(&a, del);
+			ft_lstclear(&b, del);
+			return (0);
+		}
+		sort(&a, &b);
 	}
-	if (n_args == 2)
-	{
-		pgreen("sa");
-		return (0);
-	}
-	push_swap(stack_a, NULL, argc - 1, 0);
 	return (0);
 }

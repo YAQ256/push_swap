@@ -6,24 +6,22 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:43:39 by cyacoub-          #+#    #+#             */
-/*   Updated: 2022/09/29 14:43:57 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:55:31 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_stack **lst, void (*del)(int))
 {
-	t_list	*aux;
-	t_list	*nxt;
+	t_stack	*tmp;
 
-	aux = *lst;
-	while (aux)
+	while (*lst != NULL)
 	{
-		nxt = aux->next;
-		ft_lstdelone(aux, (*del));
-		aux = nxt;
+		tmp = (*lst)->next;
+		del((*lst)->data);
+		free(*lst);
+		*lst = tmp;
 	}
-	free(aux);
-	*lst = 0;
+	*lst = NULL;
 }

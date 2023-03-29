@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:01:23 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/23 21:50:22 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:57:14 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@
 # include <stdio.h>
 # include <limits.h>
 
-typedef struct s_list
+typedef struct s_stack
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+	int				data;
+	int				pos;
+	struct s_stack	*next;
+}	t_stack;
 
 int		ft_atoi(const char *str);
 size_t	ft_strlen(const char *str);
@@ -62,14 +63,18 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	**ft_split(char const *s, char c);
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_stack	*ft_lstnew(int data);
+void	ft_lstadd_front(t_stack **lst, t_stack *new);
+int		ft_lstsize(t_stack *lst);
+void	ft_lstadd_back(t_stack **lst, t_stack *new);
+t_stack	*ft_lstlast(t_stack *lst);
+void	ft_lstdelone(t_stack *lst, void (*del)(int));
+void	ft_lstclear(t_stack **lst, void (*del)(int));
+void	ft_lstiter(t_stack *lst, void *(*f)(int));
+t_stack	*ft_lstmap(t_stack *lst, int (f)(int), void (*del)(int));
+t_stack	*ft_lstseclast(t_stack *lst);
+int		ft_issign(char c);
+int		ft_isspace(char c);
+void	ft_swap(int *a, int *b);
 
 #endif

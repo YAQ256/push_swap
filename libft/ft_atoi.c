@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:11:50 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/23 21:49:52 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/29 14:29:23 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,25 @@
 
 int	ft_atoi(const char *str)
 {
-	long int	ret;
-	int			negative;
+	int			i;
+	int			sign;
+	long		num;
 
-	ret = 0;
-	negative = 1;
-	if (*str == '-')
+	i = 0;
+	sign = 1;
+	num = 0;
+	while (str[i] && ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (*str == '-')
-			negative = -1;
-		++str;
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
-	while (*str >= '0' && *str <= '9')
+	while (str[i] && ft_isdigit(str[i]))
 	{
-		ret *= 10;
-		ret += (*str - 48);
-		++str;
+		num = (num * 10) + (str[i] - '0');
+		i++;
 	}
-	if (ret < INT_MIN || ret > INT_MAX || \
-			(*str < '0' && *str != '\0') || (*str > '9' && *str != '\0'))
-	{
-		ft_putstr_fd(RED"Atoi Error\n"RESET, 2);
-		exit(0);
-	}
-	return (ret * negative);
+	return (num * sign);
 }

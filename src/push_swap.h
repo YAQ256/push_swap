@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:57:31 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/23 22:17:30 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/29 15:52:36 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,59 +18,50 @@
 # include <stdlib.h>
 # include <limits.h>
 
-typedef struct s_push
-{
-	int				index;
-	int				value;
-	int				pos;
-	int				target_pos;
-	int				moves_a;
-	int				moves_b;
-	struct s_push	*next;
-}	t_push;
-
-struct s_push	*stack_memory(struct s_push *stack, char **argv, int *n);
-struct s_push 	*sa(struct s_push *stack_a);
-struct s_push 	*ra(struct s_push *stack_a);
-struct s_push	*rra(struct s_push *stack_a);
-struct s_push	*sb(struct s_push *stack_b);
-struct s_push	*rb(struct s_push *stack_b);
-struct s_push	*rrb(struct s_push *stack_b);
-struct s_push	*sort_three_numbers(struct s_push *stack);
-struct s_push	*splited(int argc, char **argv, struct s_push *stack);
-struct s_push	*ft_lastnode(struct s_push *lst);
-struct s_push	*orient_a(struct s_push *stack_a, \
-					struct s_push *start, int a_size);
-
-
-void			merror(char *str);
-int				get_index(struct s_push *stack, struct s_push *cur);
-void			assign_index(struct s_push *stack);
-int				is_sorted(struct s_push *stack_a, struct s_push *stack_b);
-void			pgreen(char *str);
-void			pa(struct s_push **stack_a, struct s_push **stack_b);
-void			pb(struct s_push **stack_a, struct s_push **stack_b);
-void			rr(struct s_push **stack_a, struct s_push **stack_b);
-void			rrr(struct s_push **stack_a, struct s_push **stack_b);
-int				stack_size(struct s_push *stack);
-void			calculate_cost(struct s_push *stack_a, struct s_push *stack_b);
-int				ft_abs(int i);
-int				find_lowest_cost(struct s_push *stack_b);
-int				rotate_a(struct s_push **stack_a, int rotations);
-int				rotate_b(struct s_push **stack_b, int rotations);
-void			sort_single(struct s_push **stack_a, struct s_push **stack_b);
-void			free_stack(struct s_push *stack);
-void			assign_pos(struct s_push *stack_a, struct s_push *stack_b);
-
-
-void			move_single(struct s_push **stack_a, struct s_push **stack_b, \
-					struct s_push *start);
-void			assign_target_pos(struct s_push *stack_a, struct s_push *stack_b, \
-					int target_pos, struct s_push *start);
-void			rotate_single(struct s_push **stack_a, struct s_push **stack_b, \
-					int a_rotations, int b_rotations);
-
-
+void	swap(t_stack *top);
+void	push(t_stack **src, t_stack **dest);
+void	rotate(t_stack **top);
+void	reverse_rotate(t_stack **top);
+void	sa(t_stack *a);
+void	pa(t_stack **a, t_stack **b);
+void	ra(t_stack **a);
+void	rra(t_stack **a);
+void	sb(t_stack *b);
+void	pb(t_stack **a, t_stack **b);
+void	rb(t_stack **b);
+void	rrb(t_stack **b);
+void	ss(t_stack *a, t_stack *b);
+void	rr(t_stack *a, t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
+char	**split_args(int argc, char **argv);
+void	error_check(char **str);
+void	print_error(void);
+void	sign_error(char *str, int *i, int *sign);
+void	num_error(char *str);
+void	fake_atoi(char *str);
+void	check_duplicates(char **str, int len);
+int		is_sorted(t_stack *top);
+int		num_len(int num);
+void	zeros_validation(char **str, int len);
+void	free_str(char **str);
+void	del(int data);
+t_stack	*fill_stack(char **str);
+int		max_pos(t_stack *a);
+int		largest_element(t_stack *head);
+int		min_pos(t_stack *a);
+int		*str_to_arr(t_stack *a);
+int		*bubble_sort(t_stack *a);
+void	indexing(t_stack *a);
+int		place_in_stack(t_stack **a, int data);
+void	b_to_a(t_stack **a, t_stack **b);
+int		generate_n(int size);
+void	a_to_b(t_stack **a, t_stack **b, int n);
+void	stack_divider(t_stack **a, t_stack **b);
+void	sort2(t_stack **a);
+void	sort3(t_stack **a);
+void	sort4(t_stack **a, t_stack **b);
+void	sort5(t_stack **a, t_stack **b);
+void	small_sort(int size, t_stack **a, t_stack **b);
 
 //===SETTINGS 	COLORS===/
 //===Color font code===/

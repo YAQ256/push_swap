@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 14:44:51 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/29 17:57:02 by cyacoub-         ###   ########.fr       */
+/*   Created: 2023/03/29 13:05:06 by cyacoub-          #+#    #+#             */
+/*   Updated: 2023/03/29 13:05:31 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-t_stack	*ft_lstmap(t_stack *lst, int (f)(int), void (*del)(int))
+void	error_check(char **str)
 {
-	t_stack	*new_list;
-	t_stack	*new_node;
+	int	j;
 
-	new_list = NULL;
-	if (lst == NULL || f == NULL)
-		return (new_list);
-	while (lst)
+	j = 0;
+	while (str[j])
 	{
-		new_node = ft_lstnew((*f)(lst->data));
-		if (new_node == NULL)
-		{
-			ft_lstclear(&new_list, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_list, new_node);
-		lst = lst->next;
+		fake_atoi(str[j]);
+		j++;
 	}
-	return (new_list);
+	check_duplicates(str, j);
+	zeros_validation(str, j);
+}
+
+void	print_error(void)
+{
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
 }

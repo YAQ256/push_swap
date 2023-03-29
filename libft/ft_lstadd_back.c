@@ -6,15 +6,15 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:42:25 by cyacoub-          #+#    #+#             */
-/*   Updated: 2022/09/29 14:42:27 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/29 08:05:43 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
-	t_list	*aux;
+	t_stack	*aux;
 
 	if (*lst && new)
 	{

@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 14:44:51 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/29 17:57:02 by cyacoub-         ###   ########.fr       */
+/*   Created: 2023/03/29 14:33:56 by cyacoub-          #+#    #+#             */
+/*   Updated: 2023/03/29 17:51:02 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-t_stack	*ft_lstmap(t_stack *lst, int (f)(int), void (*del)(int))
+t_stack	*fill_stack(char **str)
 {
-	t_stack	*new_list;
-	t_stack	*new_node;
+	int		i;
+	t_stack	*top;
+	t_stack	*num;
 
-	new_list = NULL;
-	if (lst == NULL || f == NULL)
-		return (new_list);
-	while (lst)
+	i = 0;
+	top = ft_lstnew(ft_atoi(str[i]));
+	top->pos = i;
+	while (str[++i])
 	{
-		new_node = ft_lstnew((*f)(lst->data));
-		if (new_node == NULL)
-		{
-			ft_lstclear(&new_list, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_list, new_node);
-		lst = lst->next;
+		num = ft_lstnew(ft_atoi(str[i]));
+		num->pos = i;
+		ft_lstadd_back(&top, num);
 	}
-	return (new_list);
+	return (top);
 }
