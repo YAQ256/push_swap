@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 14:36:52 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/29 14:37:20 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:12:28 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	sort5(t_stack **a, t_stack **b)
 	sort4(a, b);
 	pa(b, a);
 }
-
 
 void	small_sort(int size, t_stack **a, t_stack **b)
 {
