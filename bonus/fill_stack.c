@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_stack_a.c                                     :+:      :+:    :+:   */
+/*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 12:28:22 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/04/03 18:28:41 by cyacoub-         ###   ########.fr       */
+/*   Created: 2023/03/29 14:33:56 by cyacoub-          #+#    #+#             */
+/*   Updated: 2023/04/03 17:25:29 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	sa(t_stack *a)
+t_stack	*fill_stack(char **str)
 {
-	swap(a);
-}
+	int		i;
+	t_stack	*top;
+	t_stack	*num;
 
-void	pa(t_stack **a, t_stack **b)
-{
-	push(a, b);
-}
-
-void	ra(t_stack **a)
-{
-	rotate(a);
-}
-
-void	rra(t_stack **a)
-{
-	reverse_rotate(a);
+	i = 0;
+	top = ft_lstnew(ft_atoi(str[i]));
+	top->pos = i;
+	while (str[++i])
+	{
+		num = ft_lstnew(ft_atoi(str[i]));
+		num->pos = i;
+		ft_lstadd_back(&top, num);
+	}
+	return (top);
 }

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_stack_a.c                                     :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 12:28:22 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/04/03 18:28:41 by cyacoub-         ###   ########.fr       */
+/*   Created: 2023/03/29 12:40:25 by cyacoub-          #+#    #+#             */
+/*   Updated: 2023/04/03 17:26:24 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	sa(t_stack *a)
+void	free_str(char **str)
 {
-	swap(a);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	del(int data)
 {
-	push(a, b);
-}
-
-void	ra(t_stack **a)
-{
-	rotate(a);
-}
-
-void	rra(t_stack **a)
-{
-	reverse_rotate(a);
+	(void)data;
 }
