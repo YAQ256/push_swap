@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Create3 164 by cyacoub-          #+#    #+#             */
-/*   Update4 :21 by cyacoub-         ###   ########.fr       */
+/*   Created: 2023/04/04 13:31:04 by cyacoub-          #+#    #+#             */
+/*   Updated: 2023/04/04 13:31:36 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-static int ft_strcmp(char *s1, char *s2)
+static int	ft_strcmp(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!s1 || !s2)

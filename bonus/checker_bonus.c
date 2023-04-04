@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 16:12:17 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/04/04 13:20:39 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/04/04 14:39:27 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-int	valid_move(char *moves)
+static int	valid_move(char *moves)
 {
 	if (ft_strlen(moves) < 2 || ft_strlen(moves) > 3 || ((ft_strlen(moves) == 2
 				&& ft_strncmp(moves, "pa", 2) && ft_strncmp(moves, "pb", 2)
@@ -28,7 +28,7 @@ int	valid_move(char *moves)
 	return (1);
 }
 
-char	*read_move(int fd)
+static char	*read_move(int fd)
 {
 	char	*read;
 	char	*res;
@@ -64,6 +64,11 @@ static void	sort(t_stack **a, t_stack **b)
 		ft_putstr_fd("KO\n", 1);
 }
 
+/* static void	ft_leaks(void)
+{
+	system("leaks -q checker");
+} */
+
 int	main(int argc, char **argv)
 {
 	char	**args;
@@ -89,5 +94,8 @@ int	main(int argc, char **argv)
 		}
 		sort(&a, &b);
 	}
+	//atexit(ft_leaks);
+	/* system("leaks -q checker");
+	printf("aguacate\n"); */
 	return (0);
 }
