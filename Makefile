@@ -6,7 +6,7 @@
 #    By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/29 12:15:03 by cyacoub-          #+#    #+#              #
-#    Updated: 2023/04/03 17:54:17 by cyacoub-         ###   ########.fr        #
+#    Updated: 2023/04/04 13:36:17 by cyacoub-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,9 @@ SRC =	move_stack_a.c move_stack_b.c move_stack_ab.c moves.c push_swap.c \
 		args_parser.c errors.c fill_stack.c free.c index.c num_validation.c \
 		pos.c small_sort.c split_args.c stack_divider.c
 
-SRC_BONUS =	move_stack_a.c move_stack_b.c move_stack_ab.c moves.c checker.c \
-			args_parser.c errors.c get_next_line.c get_next_line_utils.c \
-			num_validation.c put_moves.c split_args.c fill_stack.c free.c
+SRC_BONUS =	move_stack_a_bonus.c move_stack_b_bonus.c move_stack_ab_bonus.c moves_bonus.c checker_bonus.c \
+			args_parser_bonus.c errors_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c \
+			num_validation_bonus.c put_moves_bonus.c split_args_bonus.c fill_stack_bonus.c free_bonus.c
 
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 OBJS = ${SRCS:.c=.o}
