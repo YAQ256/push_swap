@@ -5,37 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 16:37:04 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/04/03 18:45:32 by cyacoub-         ###   ########.fr       */
+/*   Create3 164 by cyacoub-          #+#    #+#             */
+/*   Update4 :21 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	put_moves(char	*move, t_stack *a, t_stack *b)
+static int ft_strcmp(char *s1, char *s2)
 {
-	if (ft_strncmp(move, "sa", 2) == 0)
-		sa(a);
-	if (ft_strncmp(move, "sb", 2) == 0)
-		sb(a);
-	if (ft_strncmp(move, "ss", 2) == 0)
-		ss(a, b);
-	if (ft_strncmp(move, "ra", 2) == 0)
-		ra(&a);
-	if (ft_strncmp(move, "rb", 2) == 0)
-		rb(&a);
-	if (ft_strncmp(move, "rr", 2) == 0)
-		rr(a, b);
-	if (ft_strncmp(move, "rra", 3) == 0)
-		rra(&a);
-	if (ft_strncmp(move, "rrb", 3) == 0)
-		rrb(&a);
-	if (ft_strncmp(move, "rrr", 3) == 0)
-		rrr(a, b);
-	if (ft_strncmp(move, "pa", 2) == 0)
-		pa(&a, &b);
-	if (ft_strncmp(move, "pb", 2) == 0)
-		pb(&a, &b);
-	else
-		ft_putstr_fd("Falla\n", 1);
+	int i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] < s2[i])
+			return (-1);
+		else if (s1[i] > s2[i])
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	put_moves(char	*move, t_stack **a, t_stack **b)
+{
+	if (!ft_strcmp(move, "sa"))
+		sa(*a);
+	else if (!ft_strcmp(move, "sb"))
+		sb(*b);
+	else if (!ft_strcmp(move, "ss"))
+		ss(*a, *b);
+	else if (!ft_strcmp(move, "ra"))
+		ra(a);
+	else if (!ft_strcmp(move, "rb"))
+		rb(b);
+	else if (!ft_strcmp(move, "rr"))
+		rr(*a, *b);
+	else if (!ft_strcmp(move, "rra"))
+		rra(a);
+	else if (!ft_strcmp(move, "rrb"))
+		rrb(b);
+	else if (!ft_strcmp(move, "rrr"))
+		rrr(*a, *b);
+	else if (!ft_strcmp(move, "pa"))
+		pa(b, a);
+	else if (!ft_strcmp(move, "pb"))
+		pb(a, b);
 }

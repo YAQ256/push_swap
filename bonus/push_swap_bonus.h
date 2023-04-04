@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 13:57:31 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/04/03 17:26:35 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/04/04 12:13:39 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		num_len(int num);
 void	zeros_validation(char **str, int len);
 int		valid_move(char *mv);
 char	*read_move(int fd);
-void	put_moves(char	*move, t_stack *a, t_stack *b);
+void	put_moves(char	*move, t_stack **a, t_stack **b);
 t_stack	*fill_stack(char **str);
 void	free_str(char **str);
 void	del(int data);
