@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 16:12:17 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/04/04 14:39:27 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/04/04 15:40:39 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ static void	sort(t_stack **a, t_stack **b)
 	int		fd;
 
 	fd = 0;
+	if (is_sorted(*a))
+	{
+		ft_putendl_fd("OK", 1);
+		return ;
+	}
 	while (1)
 	{
 		moves = read_move(fd);
@@ -63,11 +68,6 @@ static void	sort(t_stack **a, t_stack **b)
 	else
 		ft_putstr_fd("KO\n", 1);
 }
-
-/* static void	ft_leaks(void)
-{
-	system("leaks -q checker");
-} */
 
 int	main(int argc, char **argv)
 {
@@ -85,17 +85,8 @@ int	main(int argc, char **argv)
 		error_check(args);
 		a = fill_stack(args);
 		free_str(args);
-		if (is_sorted(a))
-		{
-			ft_lstclear(&a, del);
-			ft_lstclear(&b, del);
-			ft_putstr_fd("OK\n", 1);
-			exit(0);
-		}
 		sort(&a, &b);
+		free_lst(a, b);
 	}
-	//atexit(ft_leaks);
-	/* system("leaks -q checker");
-	printf("aguacate\n"); */
 	return (0);
 }

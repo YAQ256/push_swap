@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 12:40:25 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/04/03 17:26:24 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/04/04 15:40:07 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,14 @@ void	free_str(char **str)
 void	del(int data)
 {
 	(void)data;
+}
+
+void	free_lst(t_stack *a, t_stack *b)
+{
+	if (is_sorted(a))
+	{
+		ft_lstclear(&a, del);
+		ft_lstclear(&b, del);
+		exit(0);
+	}
 }
